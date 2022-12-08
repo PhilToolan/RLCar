@@ -509,10 +509,10 @@ public class VehicleControl : MonoBehaviour
                 {
                     
                     
-                    //steer = Mathf.MoveTowards(steer, Input.GetAxis("Horizontal"), 0.2f);
-                    //accel = Input.GetAxis("Vertical");
-                    steer = agentsteer;
-                    accel = agentaccel;
+                    steer = Mathf.MoveTowards(steer, Input.GetAxis("Horizontal"), 0.2f);
+                    accel = Input.GetAxis("Vertical");
+                    //steer = agentsteer;
+                    //accel = agentaccel;
                     //brake = agentbrake;
                     if (agentbrake > 0)
                     {

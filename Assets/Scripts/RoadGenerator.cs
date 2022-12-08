@@ -94,12 +94,12 @@ public class RoadGenerator : MonoBehaviour
         {
 			return new Vector3(_position, 1, 6.5f);
 		}
-		else if(roadChunks.Length > 1)
+		else if(roadChunks.Length > 2)
 		{
 			GameObject _prevChunk = GetCurrentChunk();
 			if (_prevChunk.name == "road_curve(Clone)")
             {
-				return new Vector3(_position, 1, 6.5f);
+				return new Vector3(_position, 1, 26.0f);
 			}
 			else
             {

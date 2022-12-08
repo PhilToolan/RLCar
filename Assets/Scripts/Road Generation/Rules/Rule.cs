@@ -2,7 +2,7 @@
 
 namespace SVS
 {
-	[CreateAssetMenu(menuName ="ProceduralCity/Rule")]
+	[CreateAssetMenu(menuName ="ProceduralRoad/Rule")]
 	public class Rule : ScriptableObject
 	{
 		public string letter;

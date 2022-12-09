@@ -473,10 +473,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rules:
   - {fileID: 11400000, guid: 6c7ea0cc078350540840b7b7b52f91c9, type: 2}
-  rootSentence: '[F]--F'
-  iterationLimit: 2
-  randomIgnoreRuleModifier: 1
-  chanceToIgnoreRule: 0.3
+  - {fileID: 11400000, guid: 98ed417fb6dd34e479ad37a924f7058e, type: 2}
+  - {fileID: 11400000, guid: db9d664aaec08cf4381bc32735b854d7, type: 2}
+  rootSentence: '*'
+  iterationLimit: 3
+  randomIgnoreRuleModifier: 0
+  chanceToIgnoreRule: 0
 --- !u!4 &1013088959
 Transform:
   m_ObjectHideFlags: 0
@@ -574,7 +576,8 @@ MonoBehaviour:
   lsystem: {fileID: 1013088958}
   roadHelper: {fileID: 2027173341}
   structureHelper: {fileID: 247891453}
-  roadLength: 8
+  roadLength: 10
+  angle: 90
 --- !u!4 &1603022272
 Transform:
   m_ObjectHideFlags: 0

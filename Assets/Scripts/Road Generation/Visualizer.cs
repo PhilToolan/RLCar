@@ -13,6 +13,8 @@ namespace SVS
         public StructureHelper structureHelper;
         public int roadLength = 8;
         private int length = 8;
+        [Header("Control angle of turns")]
+        [SerializeField]
         private float angle = 90;
         private bool waitingForTheRoad = false;
 

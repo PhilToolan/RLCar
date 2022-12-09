@@ -9,19 +9,19 @@ namespace SVS
         public static List<Direction> FindNeighbour(Vector3Int position, ICollection<Vector3Int> collection)
         {
             List<Direction> neighbourDirections = new List<Direction>();
-            if (collection.Contains(position + Vector3Int.right))
+            if (collection.Contains(position + new Vector3Int(15, 0, 0)))
             {
                 neighbourDirections.Add(Direction.Right);
             }
-            if (collection.Contains(position - Vector3Int.right))
+            if (collection.Contains(position - new Vector3Int(15, 0, 0)))
             {
                 neighbourDirections.Add(Direction.Left);
             }
-            if (collection.Contains(position + new Vector3Int(0, 0, 1)))
+            if (collection.Contains(position + new Vector3Int(0, 0, 15)))
             {
                 neighbourDirections.Add(Direction.Up);
             }
-            if (collection.Contains(position - new Vector3Int(0, 0, 1)))
+            if (collection.Contains(position - new Vector3Int(0, 0, 15)))
             {
                 neighbourDirections.Add(Direction.Down);
             }
@@ -33,13 +33,13 @@ namespace SVS
             switch (direction)
             {
                 case Direction.Up:
-                    return new Vector3Int(0, 0, 1);
+                    return new Vector3Int(0, 0, 15);
                 case Direction.Down:
-                    return new Vector3Int(0, 0, -1);
+                    return new Vector3Int(0, 0, -15);
                 case Direction.Left:
-                    return Vector3Int.left;
+                    return new Vector3Int(-15, 0, 0);
                 case Direction.Right:
-                    return Vector3Int.right;
+                    return new Vector3Int(15, 0, 0);
                 default:
                     break;
             }

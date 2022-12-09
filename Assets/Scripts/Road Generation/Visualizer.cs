@@ -53,7 +53,7 @@ namespace SVS
             var currentPosition = Vector3.zero;
 
             //Vector3 direction = Vector3.forward;
-            Vector3 direction = new Vector3(0, 0, 1);
+            Vector3 direction = new Vector3(0, 0, 15);
             Vector3 tempPosition = Vector3.zero;
 
 

@@ -6,7 +6,7 @@ namespace SVS
 	public class FallTween : MonoBehaviour
 	{
 		private Vector3 destination;
-		public float timeToFall = 0.1f;
+		public float timeToFall = 0.01f;
 
 		private void Start()
 		{

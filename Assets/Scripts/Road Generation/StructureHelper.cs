@@ -30,15 +30,16 @@ namespace SVS
 				switch (freeSpot.Value)
 				{
 					case Direction.Up:
-						rotation = Quaternion.Euler(0, 90, 0);
+						rotation = Quaternion.Euler(0, 0, 0);
 						break;
 					case Direction.Down:
-						rotation = Quaternion.Euler(0, -90, 0);
+						rotation = Quaternion.Euler(0, 360, 0);
 						break;
 					case Direction.Right:
-						rotation = Quaternion.Euler(0, 180, 0);
+						rotation = Quaternion.Euler(0, 90, 0);
 						break;
 					default:
+						rotation = Quaternion.Euler(0, -90, 0);
 						break;
 				}
 				for (int i = 0; i < buildingTypes.Length; i++)
@@ -79,7 +80,8 @@ namespace SVS
 						}
 						else
 						{
-							var building = SpawnPrefab(buildingTypes[i].GetPrefab(), freeSpot.Key, rotation);
+							int rand = UnityEngine.Random.Range(0, 4);
+							var building = SpawnPrefab(buildingTypes[rand].GetPrefab(), freeSpot.Key, rotation);
 							structuresDictionary.Add(freeSpot.Key, building);
 							
 						}
@@ -100,11 +102,11 @@ namespace SVS
 			Vector3Int direction = Vector3Int.zero;
 			if(freeSpot.Value == Direction.Down || freeSpot.Value == Direction.Up)
 			{
-				direction = Vector3Int.right;
+				direction = new Vector3Int(15, 0, 0);
 			}
 			else
 			{
-				direction = new Vector3Int(0, 0, 1);
+				direction = new Vector3Int(0, 0, 15);
 			}
 			for (int i = 1; i <= halfSize; i++)
 			{

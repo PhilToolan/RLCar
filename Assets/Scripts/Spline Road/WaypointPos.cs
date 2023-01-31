@@ -22,36 +22,36 @@ public class WaypointPos : MonoBehaviour
         if (wayPoint1)
         {
             // min inclusive, max exclusive
-            int xPos = Random.Range(-230, -20);
-            int zPos = Random.Range(20, 150);
+            int xPos = Random.Range(-230, -21);
+            int zPos = Random.Range(20, 151);
             this.transform.position = new Vector3(xPos, 0.1f, zPos);
         }
         else if (wayPoint2)
         {
             // min inclusive, max exclusive
-            int xPos = Random.Range(-230, -20);
-            int zPos = Random.Range(20, 150);
+            int xPos = Random.Range(-230, -16);
+            int zPos = Random.Range(155, 420);
             this.transform.position = new Vector3(xPos, 0.1f, zPos);
         }
         else if (wayPoint3)
         {
             // min inclusive, max exclusive
-            int xPos = Random.Range(-230, -20);
-            int zPos = Random.Range(20, 150);
+            int xPos = Random.Range(20, 231);
+            int zPos = Random.Range(300, 420);
             this.transform.position = new Vector3(xPos, 0.1f, zPos);
         }
         else if (wayPoint4)
         {
             // min inclusive, max exclusive
-            int xPos = Random.Range(-230, -20);
-            int zPos = Random.Range(20, 150);
+            int xPos = Random.Range(10, 200);
+            int zPos = Random.Range(200, 300);
             this.transform.position = new Vector3(xPos, 0.1f, zPos);
         }
         else
         {
             // min inclusive, max exclusive
-            int xPos = Random.Range(-230, -20);
-            int zPos = Random.Range(20, 150);
+            int xPos = Random.Range(10, 100);
+            int zPos = Random.Range(20, 151);
             this.transform.position = new Vector3(xPos, 0.1f, zPos);
         }
 
@@ -68,36 +68,36 @@ public class WaypointPos : MonoBehaviour
             if (wayPoint1)
             {
                 // min inclusive, max exclusive
-                int xPos = Random.Range(-230, -20);
-                int zPos = Random.Range(20, 150);
+                int xPos = Random.Range(-230, -21);
+                int zPos = Random.Range(20, 151);
                 this.transform.position = new Vector3(xPos, 0.1f, zPos);
             }
             else if (wayPoint2)
             {
                 // min inclusive, max exclusive
-                int xPos = Random.Range(-230, -20);
-                int zPos = Random.Range(20, 150);
+                int xPos = Random.Range(-230, -16);
+                int zPos = Random.Range(155, 420);
                 this.transform.position = new Vector3(xPos, 0.1f, zPos);
             }
             else if (wayPoint3)
             {
                 // min inclusive, max exclusive
-                int xPos = Random.Range(-230, -20);
-                int zPos = Random.Range(20, 150);
+                int xPos = Random.Range(20, 231);
+                int zPos = Random.Range(300, 420);
                 this.transform.position = new Vector3(xPos, 0.1f, zPos);
             }
             else if (wayPoint4)
             {
                 // min inclusive, max exclusive
-                int xPos = Random.Range(-230, -20);
-                int zPos = Random.Range(20, 150);
+                int xPos = Random.Range(10, 200);
+                int zPos = Random.Range(200, 300);
                 this.transform.position = new Vector3(xPos, 0.1f, zPos);
             }
             else
             {
                 // min inclusive, max exclusive
-                int xPos = Random.Range(-230, -20);
-                int zPos = Random.Range(20, 150);
+                int xPos = Random.Range(10, 100);
+                int zPos = Random.Range(20, 151);
                 this.transform.position = new Vector3(xPos, 0.1f, zPos);
             }
         }

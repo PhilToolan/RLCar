@@ -30,8 +30,7 @@ namespace PathCreation.Examples
 
                 float whichWay = Vector3.Cross(transform.forward, normalizedDirection).y;
 
-                print(whichWay);
-                //target = targetGameObject.transform.position - transform.position;
+                //print(whichWay);
 
                 // steering
                 if (whichWay < -1.0f)
@@ -44,7 +43,7 @@ namespace PathCreation.Examples
                 }
                 else
                 {
-                    control.agentsteer = 0.0f;
+                    control.agentsteer = Mathf.Lerp(control.agentsteer, 0.0f, 0.1f);
                 }
 
                 //acceleration

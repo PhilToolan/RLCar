@@ -19,7 +19,7 @@ public class TORTimer : MonoBehaviour
     {
         panelImage.color = new Color(11f / 255f, 110f / 255f, 79f / 255f);
 
-        timerDuration = Random.Range(10, 30);
+        timerDuration = Random.Range(20, 35);
         Invoke("OnCountdownBegin", timerDuration - 3);
         Invoke("OnTimerEnd", timerDuration);
     }
@@ -32,7 +32,7 @@ public class TORTimer : MonoBehaviour
 
     void OnTimerEnd()
     {
-        Debug.Log("Timer has ended.");
+        //Debug.Log("Timer has ended.");
         control.autodrive = false;
 
     }

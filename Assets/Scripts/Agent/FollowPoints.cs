@@ -10,16 +10,16 @@ public class FollowPoints : MonoBehaviour
         
     }
 
-    public Vector3 Calculate()
+/*    public Vector3 Calculate()
     {
 
-        nextWaypoint = path.NextWaypoint();
+ *//*       nextWaypoint = path.NextWaypoint();
         if (Vector3.Distance(transform.position, nextWaypoint) < waypointDistance)
         {
             path.AdvanceToNext();
         }
-        return;
-    }
+        return;*//*
+    }*/
 
     // Update is called once per frame
     void Update()

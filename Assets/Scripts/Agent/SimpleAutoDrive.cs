@@ -2,40 +2,63 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SimpleAutoDrive : MonoBehaviour
+
+namespace PathCreation.Examples
 {
-
-    public Vector3 force = Vector3.zero;
-    public Vector3 acceleration = Vector3.zero;
-    public Vector3 velocity = Vector3.zero;
-
-    public FollowPoints followPoints;
-
-    public float maxForce = 10.0f;
-
-    // Start is called before the first frame update
-    void Start()
+    public class SimpleAutoDrive : MonoBehaviour
     {
-        
-    }
 
-    Vector3 Calculate()
-    {
-        force = Vector3.zero;
 
-        force += followPoints.Calculate();
-        float f = force.magnitude;
-        if (f >= maxForce)
+        public VehicleControl control;
+
+        public PathCreator road;
+
+        public float maxSpeed = 5.0f;
+        public float speed = 5;
+
+        public GameObject targetGameObject = null;
+        public Vector3 target = Vector3.zero;
+
+
+        void FixedUpdate()
         {
-            force = Vector3.ClampMagnitude(force, maxForce);
+
+            if (targetGameObject != null)
+            {
+
+                Vector3 normalizedDirection = targetGameObject.transform.position - transform.position;
+
+                float whichWay = Vector3.Cross(transform.forward, normalizedDirection).y;
+
+                print(whichWay);
+                //target = targetGameObject.transform.position - transform.position;
+
+                // steering
+                if (whichWay < -1.0f)
+                {
+                    control.agentsteer = -0.5f;
+                }
+                else if (whichWay > 1.0f)
+                {
+                    control.agentsteer = 0.5f;
+                }
+                else
+                {
+                    control.agentsteer = 0.0f;
+                }
+
+                //acceleration
+                if (control.speed <= 30.0f)
+                {
+                    control.agentaccel = 1.0f;
+                }
+                if (control.speed > 30.0f)
+                {
+                    control.agentaccel = 0.0f;
+                }
+            }
+
         }
-
-        return force;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        force = Calculate();
     }
 }
+

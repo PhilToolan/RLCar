@@ -115,6 +115,11 @@ namespace PathCreation.Examples {
             mesh.SetTriangles (underRoadTriangles, 1);
             mesh.SetTriangles (sideOfRoadTriangles, 2);
             mesh.RecalculateBounds ();
+
+            //Update collider
+            var collider = meshHolder.gameObject.GetComponent<MeshCollider>();
+            collider.sharedMesh = mesh;
+
         }
 
         // Add MeshRenderer and MeshFilter components to this gameobject if not already attached

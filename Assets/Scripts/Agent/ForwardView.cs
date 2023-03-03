@@ -11,7 +11,7 @@ public class ForwardView : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if(Physics.Raycast(this.gameObject.transform.position, Vector3.down, 50, roadLayer))
+        if(Physics.Raycast(gameObject.transform.position, Vector3.down, 50, roadLayer))
         {
             OnRoad = true;
 

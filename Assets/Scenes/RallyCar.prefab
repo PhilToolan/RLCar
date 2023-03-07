@@ -11798,6 +11798,11 @@ GameObject:
   - component: {fileID: 932046601446220064}
   - component: {fileID: 932046601452746434}
   - component: {fileID: 932046601452699772}
+  - component: {fileID: 2091768375}
+  - component: {fileID: 2091768376}
+  - component: {fileID: 2091768380}
+  - component: {fileID: 2091768381}
+  - component: {fileID: 2091768382}
   m_Layer: 1
   m_Name: RallyCar
   m_TagString: Untagged
@@ -11931,6 +11936,7 @@ MonoBehaviour:
   agentaccel: 0
   brake: 0
   agentbrake: 0
+  autodrive: 1
   curTorque: 100
   powerShift: 100
   shift: 0
@@ -11962,6 +11968,107 @@ MonoBehaviour:
   optionalMeshList:
   - {fileID: 932046601444063474}
   crashSound: {fileID: 932046601447433332}
+--- !u!114 &2091768375
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 932046601443016298}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b38554bd802b444289d8197bfe4e393, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  control: {fileID: 932046601452746434}
+  road: {fileID: 0}
+  maxSpeed: 10
+  speed: 10
+  targetGameObject: {fileID: 0}
+  target: {x: 0, y: 0, z: 0}
+--- !u!114 &2091768376
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 932046601443016298}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 435ab40a2652bdf46bb3f1ce9d80cdeb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnRoad: 1
+  roadLayer:
+    serializedVersion: 2
+    m_Bits: 64
+--- !u!114 &2091768380
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 932046601443016298}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ccd09cf2a2b6d0e8f9e313a182fd01e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  agentParameters:
+    maxStep: 0
+  hasUpgradedFromAgentParameters: 1
+  MaxStep: 0
+  vehicle: {fileID: 932046601443016298}
+  FinishTrigger: {fileID: 0}
+  tor: {fileID: 0}
+  recorder: {fileID: 2091768382}
+--- !u!114 &2091768381
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 932046601443016298}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d1c4e0b1822b495aa52bc52839ecb30, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_BrainParameters:
+    VectorObservationSize: 1
+    NumStackedVectorObservations: 1
+    m_ActionSpec:
+      m_NumContinuousActions: 1
+      BranchSizes: 00000000
+    VectorActionSize: 
+    VectorActionDescriptions: []
+    VectorActionSpaceType: 1
+    hasUpgradedBrainParametersWithActionSpec: 1
+  m_Model: {fileID: 0}
+  m_InferenceDevice: 0
+  m_BehaviorType: 0
+  m_BehaviorName: TOR_Model
+  TeamId: 0
+  m_UseChildSensors: 1
+  m_UseChildActuators: 1
+  m_DeterministicInference: 0
+  m_ObservableAttributeHandling: 0
+--- !u!114 &2091768382
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 932046601443016298}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2902496c0120472b90269f94a0aec7e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Record: 0
+  NumStepsToRecord: 0
+  DemonstrationName: 
+  DemonstrationDirectory: 
 --- !u!1 &932046601443026048
 GameObject:
   m_ObjectHideFlags: 0

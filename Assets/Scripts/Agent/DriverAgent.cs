@@ -35,7 +35,6 @@ namespace Unity.MLAgents.Demonstrations
         public void FixedUpdate()
         {
             laptime += Time.deltaTime;
-            //RequestDecision();
         }
 
         public override void OnEpisodeBegin()
@@ -66,7 +65,8 @@ namespace Unity.MLAgents.Demonstrations
 
             if (forwardView.OnRoad == false)
             {
-                AddReward(distance / laptime);
+                //AddReward(distance / laptime);
+                tor.EndEp();
                 EndEpisode();
             }
 
@@ -88,8 +88,9 @@ namespace Unity.MLAgents.Demonstrations
             if (other.gameObject == FinishTrigger)
             {
                 //episode completed
-                AddReward(distance / laptime);
+                //AddReward(distance / laptime);
                 tor.EndEp();
+                EndEpisode();
             }
         }
     }

@@ -54,7 +54,7 @@ namespace Unity.MLAgents.Demonstrations
             control.autodrive = true;
         }
 
-        private void Update()
+        void FixedUpdate()
         {
             if (countdown)
             {
@@ -66,6 +66,7 @@ namespace Unity.MLAgents.Demonstrations
                 else
                 {
                     countdownText.text = "Take over!";
+                    countdown = false;
                 }
             }
         }

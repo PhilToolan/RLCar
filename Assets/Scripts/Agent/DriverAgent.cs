@@ -4,7 +4,7 @@ using UnityEngine;
 using Unity.MLAgents;
 using Unity.MLAgents.Sensors;
 using Unity.MLAgents.Actuators;
-
+using PathCreation.Examples;
 
 namespace Unity.MLAgents.Demonstrations
 {
@@ -17,6 +17,7 @@ namespace Unity.MLAgents.Demonstrations
 
         public GameObject FinishTrigger;
         public TORTimer tor;
+        public GeneratePathExample pathGen;
 
         float laptime = 0f;
         float distance = 0f;
@@ -65,6 +66,7 @@ namespace Unity.MLAgents.Demonstrations
             if (forwardView.OnRoad == false)
             {
                 //AddReward(distance / laptime);
+                pathGen.GenNew();
                 tor.EndEp();
                 EndEpisode();
             }
@@ -88,6 +90,7 @@ namespace Unity.MLAgents.Demonstrations
             {
                 //episode completed
                 //AddReward(distance / laptime);
+                pathGen.GenNew();
                 tor.EndEp();
                 EndEpisode();
             }

@@ -56,7 +56,6 @@ namespace Unity.MLAgents.Demonstrations
             float steer = Mathf.Clamp(actions.ContinuousActions[1], -1f, 1f);
             int brake = actions.DiscreteActions[0];
 
-            Debug.Log(acc);
 
             //forward the values to vehicle
             control.agentaccel = acc;

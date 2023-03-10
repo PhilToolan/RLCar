@@ -11803,6 +11803,9 @@ GameObject:
   - component: {fileID: 2091768380}
   - component: {fileID: 2091768381}
   - component: {fileID: 2091768382}
+  - component: {fileID: 2091768374}
+  - component: {fileID: 1349617290491431992}
+  - component: {fileID: 2091768384}
   m_Layer: 1
   m_Name: RallyCar
   m_TagString: Untagged
@@ -12035,11 +12038,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BrainParameters:
-    VectorObservationSize: 1
+    VectorObservationSize: 0
     NumStackedVectorObservations: 1
     m_ActionSpec:
-      m_NumContinuousActions: 1
-      BranchSizes: 00000000
+      m_NumContinuousActions: 2
+      BranchSizes: 01000000
     VectorActionSize: 
     VectorActionDescriptions: []
     VectorActionSpaceType: 1
@@ -12049,7 +12052,7 @@ MonoBehaviour:
   m_BehaviorType: 0
   m_BehaviorName: TOR_Model
   TeamId: 0
-  m_UseChildSensors: 1
+  m_UseChildSensors: 0
   m_UseChildActuators: 1
   m_DeterministicInference: 0
   m_ObservableAttributeHandling: 0
@@ -12069,6 +12072,74 @@ MonoBehaviour:
   NumStepsToRecord: 0
   DemonstrationName: 
   DemonstrationDirectory: 
+--- !u!114 &2091768374
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 932046601443016298}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a5c9d521e5ef4759a8246a07d52221e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DecisionPeriod: 5
+  TakeActionsBetweenDecisions: 0
+--- !u!114 &1349617290491431992
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 932046601443016298}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6bb6b867a41448888c1cd4f99643ad71, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SensorName: RayPerceptionSensorFar
+  m_DetectableTags:
+  - Untagged
+  m_RaysPerDirection: 5
+  m_MaxRayDegrees: 70
+  m_SphereCastRadius: 0.5
+  m_RayLength: 30
+  m_RayLayerMask:
+    serializedVersion: 2
+    m_Bits: 64
+  m_ObservationStacks: 1
+  rayHitColor: {r: 1, g: 0, b: 0, a: 1}
+  rayMissColor: {r: 1, g: 1, b: 1, a: 1}
+  m_StartVerticalOffset: 5
+  m_EndVerticalOffset: -1
+--- !u!114 &2091768384
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 932046601443016298}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6bb6b867a41448888c1cd4f99643ad71, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SensorName: RayPerceptionSensorClose
+  m_DetectableTags:
+  - Untagged
+  m_RaysPerDirection: 5
+  m_MaxRayDegrees: 70
+  m_SphereCastRadius: 0.5
+  m_RayLength: 10
+  m_RayLayerMask:
+    serializedVersion: 2
+    m_Bits: 64
+  m_ObservationStacks: 1
+  rayHitColor: {r: 1, g: 0, b: 0, a: 1}
+  rayMissColor: {r: 1, g: 1, b: 1, a: 1}
+  m_StartVerticalOffset: 4
+  m_EndVerticalOffset: -2
 --- !u!1 &932046601443026048
 GameObject:
   m_ObjectHideFlags: 0

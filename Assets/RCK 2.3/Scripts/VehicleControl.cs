@@ -13,6 +13,7 @@ public class VehicleControl : MonoBehaviour
     public ControlMode controlMode = ControlMode.simple;
 
     public bool activeControl = false;
+    public bool model = false;
 
 
     // Wheels Setting /////////////////////////////////
@@ -515,16 +516,21 @@ public class VehicleControl : MonoBehaviour
                     
                     steer = Mathf.MoveTowards(steer, Input.GetAxis("Horizontal"), 0.2f);
                     accel = Input.GetAxis("Vertical");
-                    steer = agentsteer2;
-                    accel = agentaccel2;
-                    if (agentbrake2 > 0)
+
+                    if (model)
                     {
-                        brake = true;
+                        steer = agentsteer2;
+                        accel = agentaccel2;
+                        if (agentbrake2 > 0)
+                        {
+                            brake = true;
+                        }
+                        else
+                        {
+                            brake = false;
+                        }
                     }
-                    else
-                    {
-                        brake = false;
-                    }
+
 
                     if (autodrive)
                     {

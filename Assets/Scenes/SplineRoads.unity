@@ -280,7 +280,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &566167187
 PrefabInstance:
@@ -457,7 +457,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &644931635
 MonoBehaviour:
@@ -780,9 +780,13 @@ PrefabInstance:
       propertyPath: FinishTrigger
       value: 
       objectReference: {fileID: 783770842}
+    - target: {fileID: 2091768381, guid: 7fcf0b0f70073574987c08dea4ab42f8, type: 3}
+      propertyPath: m_BehaviorName
+      value: Tor
+      objectReference: {fileID: 0}
     - target: {fileID: 932046601442704646, guid: 7fcf0b0f70073574987c08dea4ab42f8, type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 932046601442704646, guid: 7fcf0b0f70073574987c08dea4ab42f8, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1154,9 +1158,9 @@ Transform:
   - {fileID: 215998777}
   - {fileID: 749824313}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!43 &1355429637
+--- !u!43 &1392806096
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1384,7 +1388,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1493833283
 GameObject:
@@ -1646,7 +1650,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1845685720}
-  m_Mesh: {fileID: 1355429637}
+  m_Mesh: {fileID: 1392806096}
 --- !u!4 &1845685723
 Transform:
   m_ObjectHideFlags: 0
@@ -1659,7 +1663,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!64 &1845685724
 MeshCollider:
@@ -1674,7 +1678,7 @@ MeshCollider:
   serializedVersion: 4
   m_Convex: 0
   m_CookingOptions: 30
-  m_Mesh: {fileID: 1355429637}
+  m_Mesh: {fileID: 1392806096}
 --- !u!1 &1991721257
 GameObject:
   m_ObjectHideFlags: 0
@@ -1956,7 +1960,7 @@ RectTransform:
   m_Children:
   - {fileID: 2048736692}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}

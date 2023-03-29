@@ -59,9 +59,9 @@ namespace Unity.MLAgents.Demonstrations
 
 
             //forward the values to vehicle
-            control.agentaccel = acc;
-            control.agentsteer = steer;
-            control.agentbrake = brake;
+            control.agentaccel2 = acc;
+            control.agentsteer2 = steer;
+            control.agentbrake2 = brake;
 
             if (forwardView.OnRoad == false)
             {

@@ -145,9 +145,12 @@ public class VehicleControl : MonoBehaviour
     public float accel = 0.0f;
     public float agentsteer = 0;
     public float agentaccel = 0.0f;
+    public float agentsteer2 = 0;
+    public float agentaccel2 = 0.0f;
     [HideInInspector]
     public bool brake;
     public int agentbrake;
+    public int agentbrake2;
     public bool autodrive;
 
     private bool shifmotor;
@@ -512,6 +515,16 @@ public class VehicleControl : MonoBehaviour
                     
                     steer = Mathf.MoveTowards(steer, Input.GetAxis("Horizontal"), 0.2f);
                     accel = Input.GetAxis("Vertical");
+                    steer = agentsteer2;
+                    accel = agentaccel2;
+                    if (agentbrake2 > 0)
+                    {
+                        brake = true;
+                    }
+                    else
+                    {
+                        brake = false;
+                    }
 
                     if (autodrive)
                     {

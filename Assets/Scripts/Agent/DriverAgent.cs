@@ -46,7 +46,7 @@ namespace Unity.MLAgents.Demonstrations
             distance = 0f;
             control.autodrive = true;
             transform.position = new Vector3(0.0f, 0.5f, 0.0f);
-            transform.rotation = Quaternion.Euler(new Vector3(0f, -45f, 0f));
+            transform.rotation = Quaternion.Euler(new Vector3(0f, -60f, 0f));
             tor.BeginEp();
 
         }

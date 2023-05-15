@@ -517,7 +517,8 @@ public class VehicleControl : MonoBehaviour
                     steer = Mathf.MoveTowards(steer, Input.GetAxis("Horizontal"), 0.2f);
                     accel = Input.GetAxis("Vertical");
 
-                    if (model)
+                    // && !autodrive
+                    if (model && !autodrive)
                     {
                         steer = agentsteer2;
                         accel = agentaccel2;

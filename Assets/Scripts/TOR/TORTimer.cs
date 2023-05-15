@@ -18,7 +18,11 @@ namespace Unity.MLAgents.Demonstrations
 
         public VehicleControl control;
         public DemonstrationRecorder car;
-
+        public WaypointPos roadPos;
+        public WaypointPos roadPos2;
+        public WaypointPos roadPos3;
+        public WaypointPos roadPos4;
+        public WaypointPos roadPos5;
 
         void Start()
         {
@@ -51,7 +55,12 @@ namespace Unity.MLAgents.Demonstrations
             car.Record = false;
             panelImage.color = new Color(11f / 255f, 110f / 255f, 79f / 255f);
             countdownText.text = "Take-over Controller";
-            control.autodrive = true;
+            roadPos.ReGen();
+            roadPos2.ReGen();
+            roadPos3.ReGen();
+            roadPos4.ReGen();
+            roadPos5.ReGen();
+            //control.autodrive = true;
         }
 
         void FixedUpdate()
@@ -67,6 +76,7 @@ namespace Unity.MLAgents.Demonstrations
                 {
                     countdownText.text = "Take over!";
                     countdown = false;
+                    countdownTimer = 3.0f;
                 }
             }
         }

@@ -50,7 +50,7 @@ public class ObjectSpawner : MonoBehaviour
         do
         {
             float randomX = Random.Range(minBounds.x, maxBounds.x);
-            float randomY = 0.5f;
+            float randomY = 0.0f;
             float randomZ = Random.Range(minBounds.z, maxBounds.z);
             randomPosition = new Vector3(randomX, randomY, randomZ);
 

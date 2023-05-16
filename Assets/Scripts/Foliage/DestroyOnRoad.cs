@@ -9,7 +9,7 @@ public class DestroyOnRoad : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if(Physics.Raycast(gameObject.transform.position, Vector3.down, 50, roadLayer))
+        if(Physics.Raycast((gameObject.transform.position + new Vector3(0,1,0)), Vector3.down, 50, roadLayer))
         {
             Destroy(gameObject);
         }

@@ -515,7 +515,23 @@ public class VehicleControl : MonoBehaviour
                     
                     
                     steer = Mathf.MoveTowards(steer, Input.GetAxis("Horizontal"), 0.2f);
-                    accel = Input.GetAxis("Vertical");
+                    if (Input.GetAxis("Vertical") > 0)
+                    {
+                        accel = Input.GetAxis("Vertical");
+
+                    } else if (Input.GetAxis("Vertical") < 0)
+                    {
+                        accel = 0;
+                    }
+
+                    if (Input.GetAxis("Brake") > 0)
+                    {
+                        brake = true;
+                        
+                    } else if (Input.GetAxis("Brake") < 0)
+                    {
+                        brake = false;
+                    }
 
                     // && !autodrive
                     if (model && !autodrive)

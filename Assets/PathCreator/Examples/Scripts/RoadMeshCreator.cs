@@ -15,6 +15,9 @@ namespace PathCreation.Examples {
         public Material undersideMaterial;
         public float textureTiling = 1;
 
+        [Header ("Foliage Spawn Reference")]
+        public ObjectSpawner objectSpawner;
+
         [SerializeField, HideInInspector]
         GameObject meshHolder;
 
@@ -119,6 +122,8 @@ namespace PathCreation.Examples {
             //Update collider
             var collider = meshHolder.gameObject.GetComponent<MeshCollider>();
             collider.sharedMesh = mesh;
+
+            objectSpawner.UpdateBounds();
 
         }
 

@@ -1,5 +1,8 @@
 using UnityEngine;
 using UnityEngine.UI;
+using System.Collections;
+using System.Collections.Generic;
+using System.IO;
 
 
 namespace Unity.MLAgents.Demonstrations
@@ -15,6 +18,13 @@ namespace Unity.MLAgents.Demonstrations
 
         public Image panelImage;
         private Color originalColor;
+
+        // Reaction Timer Variables
+        private float timer;
+        private float startValue1;
+        private float startValue2;
+        private float startValue3;
+        private bool isTimerRunning;
 
         public VehicleControl control;
         public DemonstrationRecorder car;
@@ -54,6 +64,12 @@ namespace Unity.MLAgents.Demonstrations
             control.autodrive = false;
             car.Record = true;
 
+            // Start a timer, when the Input.GetAxis("Horizontal") has changed by 5, stop the timer and store the result in a CSV
+            timer = 0f;
+            startValue1 = Input.GetAxis("Horizontal");
+            startValue2 = Input.GetAxis("Vertical");
+            startValue3 = Input.GetAxis("Brake");
+            isTimerRunning = true;
         }
 
         public void BeginEp()
@@ -74,25 +90,47 @@ namespace Unity.MLAgents.Demonstrations
             roadPos4.ReGen();
             roadPos5.ReGen();
             BeginEp();
-            //control.autodrive = true;
         }
 
-        void FixedUpdate()
+        private void StoreResultToCSV(float result)
         {
-            // if (countdown)
-            // {
-            //     if (countdownTimer > 0)
-            //     {
-            //         countdownTimer -= Time.deltaTime;
-            //         countdownText.text = "Time left to take over: " + Mathf.Round(countdownTimer);
-            //     }
-            //     else
-            //     {
-            //         countdownText.text = "Take over!";
-            //         countdown = false;
-            //         countdownTimer = 3.0f;
-            //     }
-            // }
+            string filePath = "Assets/Reactions/result.csv";
+            string delimiter = ",";
+
+            // Check if the file exists
+            bool fileExists = File.Exists(filePath);
+
+            // Open or create the file
+            StreamWriter writer = new StreamWriter(filePath, true);
+
+            // If the file doesn't exist, write the header
+            if (!fileExists)
+            {
+                writer.WriteLine("Reaction Time");
+            }
+
+            // Write the result to the file
+            writer.WriteLine(result.ToString());
+
+            // Close the file
+            writer.Close();
+        }
+
+        private void Update()
+        {
+            if (isTimerRunning)
+            {
+                timer += Time.deltaTime;
+
+                float currentValue1 = Input.GetAxis("Horizontal");
+                float currentValue2 = Input.GetAxis("Vertical");
+                float currentValue3 = Input.GetAxis("Brake");
+                if (Mathf.Abs(currentValue1 - startValue1) >= 0.1f || Mathf.Abs(currentValue2 - startValue2) >= 0.1f || Mathf.Abs(currentValue3 - startValue3) >= 0.1f)
+                {
+                    isTimerRunning = false;
+                    StoreResultToCSV(timer);
+                }
+            }
         }
     }
 }

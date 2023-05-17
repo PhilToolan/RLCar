@@ -164,7 +164,7 @@ public class LogitechSteeringWheel : MonoBehaviour
                 }
                 else
                 {
-                    LogitechGSDK.LogiPlaySpringForce(0, 50, 50, 50);
+                    LogitechGSDK.LogiPlaySpringForce(0, 0, 35, 75);
                     activeForceAndEffect[0] = "Spring Force\n ";
                 }
             }

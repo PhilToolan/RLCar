@@ -515,11 +515,11 @@ public class VehicleControl : MonoBehaviour
                     
                     
                     steer = Mathf.MoveTowards(steer, Input.GetAxis("Horizontal"), 1.0f);    //0.2 for keyboard
-                    if (Input.GetAxis("Vertical") > 0)
+                    if (Input.GetAxis("Vertical") > -0.5)
                     {
                         accel = Input.GetAxis("Vertical");
 
-                    } else if (Input.GetAxis("Vertical") < 0)
+                    } else if (Input.GetAxis("Vertical") < -0.5)
                     {
                         accel = 0;
                     }

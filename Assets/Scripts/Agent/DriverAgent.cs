@@ -88,7 +88,7 @@ namespace Unity.MLAgents.Demonstrations
             if (other.gameObject == FinishTrigger)
             {
                 //episode completed
-                //AddReward(distance / laptime);
+                AddReward(distance / laptime);
                 pathGen.GenNew();
                 tor.EndEp();
                 EndEpisode();

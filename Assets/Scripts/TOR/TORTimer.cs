@@ -64,7 +64,7 @@ namespace Unity.MLAgents.Demonstrations
             control.autodrive = false;
             car.Record = true;
 
-            // Start a timer, when the Input.GetAxis("Horizontal") has changed by 5, stop the timer and store the result in a CSV
+            // Start a timer, when the Input.GetAxis("Horizontal") has changed by 0.1, stop the timer and store the result in a CSV
             timer = 0f;
             startValue1 = Input.GetAxis("Horizontal");
             startValue2 = Input.GetAxis("Vertical");

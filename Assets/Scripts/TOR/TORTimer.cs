@@ -24,9 +24,19 @@ namespace Unity.MLAgents.Demonstrations
         public WaypointPos roadPos4;
         public WaypointPos roadPos5;
 
+        public AudioClip soundClip; 
+
+        private AudioSource audioSource;
+
         void Start()
         {
             panelImage.color = new Color(11f / 255f, 110f / 255f, 79f / 255f);
+            
+            // Get the AudioSource component attached to the GameObject
+            audioSource = GetComponent<AudioSource>();
+            // Set the audio clip for the AudioSource
+            audioSource.clip = soundClip;
+            BeginEp();
         }
 
         void OnCountdownBegin()
@@ -38,6 +48,9 @@ namespace Unity.MLAgents.Demonstrations
         void OnTimerEnd()
         {
             //Debug.Log("Timer has ended.");
+            audioSource.Play();
+            panelImage.color = new Color(204f / 255f, 41f / 255f, 54f / 255f);
+            countdownText.text = "Take over!";
             control.autodrive = false;
             car.Record = true;
 
@@ -45,8 +58,8 @@ namespace Unity.MLAgents.Demonstrations
 
         public void BeginEp()
         {
-            timerDuration = Random.Range(20, 35);
-            Invoke("OnCountdownBegin", timerDuration - 3);
+            timerDuration = Random.Range(8, 15);
+            //Invoke("OnCountdownBegin", timerDuration - 3);
             Invoke("OnTimerEnd", timerDuration);
         }
 
@@ -54,31 +67,32 @@ namespace Unity.MLAgents.Demonstrations
         {
             car.Record = false;
             panelImage.color = new Color(11f / 255f, 110f / 255f, 79f / 255f);
-            countdownText.text = "Take-over Controller";
+            countdownText.text = "Autonomous Driving";
             roadPos.ReGen();
             roadPos2.ReGen();
             roadPos3.ReGen();
             roadPos4.ReGen();
             roadPos5.ReGen();
+            BeginEp();
             //control.autodrive = true;
         }
 
         void FixedUpdate()
         {
-            if (countdown)
-            {
-                if (countdownTimer > 0)
-                {
-                    countdownTimer -= Time.deltaTime;
-                    countdownText.text = "Time left to take over: " + Mathf.Round(countdownTimer);
-                }
-                else
-                {
-                    countdownText.text = "Take over!";
-                    countdown = false;
-                    countdownTimer = 3.0f;
-                }
-            }
+            // if (countdown)
+            // {
+            //     if (countdownTimer > 0)
+            //     {
+            //         countdownTimer -= Time.deltaTime;
+            //         countdownText.text = "Time left to take over: " + Mathf.Round(countdownTimer);
+            //     }
+            //     else
+            //     {
+            //         countdownText.text = "Take over!";
+            //         countdown = false;
+            //         countdownTimer = 3.0f;
+            //     }
+            // }
         }
     }
 }

@@ -13,8 +13,8 @@ namespace PathCreation.Examples
 
         public PathCreator road;
 
-        public float maxSpeed = 5.0f;
-        public float speed = 5;
+        public float maxSpeed = 30.0f;
+        public float speed = 25.0f;
 
         public GameObject targetGameObject = null;
         public Vector3 target = Vector3.zero;
@@ -47,11 +47,11 @@ namespace PathCreation.Examples
                 }
 
                 //acceleration
-                if (control.speed <= 30.0f)
+                if (control.speed <= maxSpeed)
                 {
                     control.agentaccel = 1.0f;
                 }
-                if (control.speed > 30.0f)
+                if (control.speed > maxSpeed)
                 {
                     control.agentaccel = 0.0f;
                 }

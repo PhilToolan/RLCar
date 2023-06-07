@@ -3,6 +3,7 @@ using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 
 
 namespace Unity.MLAgents.Demonstrations
@@ -33,6 +34,7 @@ namespace Unity.MLAgents.Demonstrations
         public WaypointPos roadPos3;
         public WaypointPos roadPos4;
         public WaypointPos roadPos5;
+        public GameObject rallyCar;
 
         public AudioClip soundClip; 
 
@@ -79,7 +81,8 @@ namespace Unity.MLAgents.Demonstrations
             Invoke("OnTimerEnd", timerDuration);
         }
 
-        public void EndEp()
+        // Positive end (reached finish line)
+        public void EndEpP()
         {
             car.Record = false;
             panelImage.color = new Color(11f / 255f, 110f / 255f, 79f / 255f);
@@ -89,12 +92,28 @@ namespace Unity.MLAgents.Demonstrations
             roadPos3.ReGen();
             roadPos4.ReGen();
             roadPos5.ReGen();
+            AddOutcomeToCSV("Positive");
             BeginEp();
         }
 
-        private void StoreResultToCSV(float result)
+        // Negative end (didn't reach finish line)
+        public void EndEpN()
         {
-            string filePath = "Assets/Reactions/result.csv";
+            car.Record = false;
+            panelImage.color = new Color(11f / 255f, 110f / 255f, 79f / 255f);
+            countdownText.text = "Autonomous Driving";
+            roadPos.ReGen();
+            roadPos2.ReGen();
+            roadPos3.ReGen();
+            roadPos4.ReGen();
+            roadPos5.ReGen();
+            AddOutcomeToCSV("Negative");
+            BeginEp();
+        }
+
+        private void StoreResultToCSV(float result, string reactionMethod, float positionX, float positionZ)
+        {
+            string filePath = "Assets/Reactions/TestingData.csv";
             string delimiter = ",";
 
             // Check if the file exists
@@ -106,15 +125,43 @@ namespace Unity.MLAgents.Demonstrations
             // If the file doesn't exist, write the header
             if (!fileExists)
             {
-                writer.WriteLine("Reaction Time");
+                writer.WriteLine("Reaction Time, Reaction Method, Car Position X, Car Position Z, Point1 X, Point1 Z, Point2 X, Point 2 Z, Point3 X, Point3 Z, Point4 X, Point4 Z, Point5 X, Point5 Z, Outcome");
             }
 
-            // Write the result to the file
-            writer.WriteLine(result.ToString());
+            // Write the data to the file
+            writer.WriteLine($"{result.ToString()}{delimiter}{reactionMethod}{delimiter}{positionX}{delimiter}{positionZ}{delimiter}{roadPos.transform.position.x}{delimiter}{roadPos.transform.position.z}{delimiter}{roadPos2.transform.position.x}{delimiter}{roadPos2.transform.position.z}{delimiter}{roadPos3.transform.position.x}{delimiter}{roadPos3.transform.position.z}{delimiter}{roadPos4.transform.position.x}{delimiter}{roadPos4.transform.position.z}{delimiter}{roadPos5.transform.position.x}{delimiter}{roadPos5.transform.position.z}");
 
             // Close the file
             writer.Close();
         }
+
+        private void AddOutcomeToCSV(string outcome)
+        {
+            string filePath = "Assets/Reactions/TestingData.csv";
+            string delimiter = ",";
+
+            // Check if the file exists
+            bool fileExists = File.Exists(filePath);
+
+            // Open or create the file
+            StreamWriter writer = new StreamWriter(filePath, true);
+
+            // If the file doesn't exist, write the header
+            if (!fileExists)
+            {
+                writer.WriteLine("Reaction Time, Reaction Method, Car Position X, Car Position Z, Point1 X, Point1 Z, Point2 X, Point 2 Z, Point3 X, Point3 Z, Point4 X, Point4 Z, Point5 X, Point5 Z, Steering Input, Outcome");
+            }
+
+            // Append the outcome to the last line in the file
+            string lastLine = File.ReadLines(filePath).Last();
+            writer.Write(lastLine); // Write the existing data in the line
+            writer.Write(delimiter); // Write the delimiter before the new column
+            writer.WriteLine(outcome); // Write the outcome value
+
+            // Close the file
+            writer.Close();
+        }
+
 
         private void Update()
         {
@@ -125,10 +172,20 @@ namespace Unity.MLAgents.Demonstrations
                 float currentValue1 = Input.GetAxis("Horizontal");
                 float currentValue2 = Input.GetAxis("Vertical");
                 float currentValue3 = Input.GetAxis("Brake");
-                if (Mathf.Abs(currentValue1 - startValue1) >= 0.1f || Mathf.Abs(currentValue2 - startValue2) >= 0.1f || Mathf.Abs(currentValue3 - startValue3) >= 0.1f)
+                if (Mathf.Abs(currentValue1 - startValue1) >= 0.1f)
                 {
                     isTimerRunning = false;
-                    StoreResultToCSV(timer);
+                    StoreResultToCSV(timer,"Wheel", rallyCar.transform.position.x, rallyCar.transform.position.z);
+                } else 
+                if (Mathf.Abs(currentValue2 - startValue2) >= 0.1f)
+                {
+                    isTimerRunning = false;
+                    StoreResultToCSV(timer, "Accelerator", rallyCar.transform.position.x, rallyCar.transform.position.z);
+                } else 
+                if (Mathf.Abs(currentValue3 - startValue3) >= 0.1f)
+                {
+                    isTimerRunning = false;
+                    StoreResultToCSV(timer, "Brake", rallyCar.transform.position.x, rallyCar.transform.position.z);
                 }
             }
         }

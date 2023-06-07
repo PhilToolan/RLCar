@@ -66,7 +66,7 @@ namespace Unity.MLAgents.Demonstrations
             {
                 //AddReward(distance / laptime);
                 pathGen.GenNew();
-                tor.EndEp();
+                tor.EndEpN();
                 EndEpisode();
             }
 
@@ -90,7 +90,7 @@ namespace Unity.MLAgents.Demonstrations
                 //episode completed
                 AddReward(distance / laptime);
                 pathGen.GenNew();
-                tor.EndEp();
+                tor.EndEpP();
                 EndEpisode();
             }
         }

@@ -137,7 +137,7 @@ namespace Unity.MLAgents.Demonstrations
 
         private void AddOutcomeToCSV(string outcome)
         {
-            string filePath = "Assets/Reactions/TestingData.csv";
+            string filePath = "Assets/Reactions/Outcome.csv";
             string delimiter = ",";
 
             // Check if the file exists
@@ -149,13 +149,8 @@ namespace Unity.MLAgents.Demonstrations
             // If the file doesn't exist, write the header
             if (!fileExists)
             {
-                writer.WriteLine("Reaction Time, Reaction Method, Car Position X, Car Position Z, Point1 X, Point1 Z, Point2 X, Point 2 Z, Point3 X, Point3 Z, Point4 X, Point4 Z, Point5 X, Point5 Z, Steering Input, Outcome");
+                writer.WriteLine("Outcome");
             }
-
-            // Append the outcome to the last line in the file
-            string lastLine = File.ReadLines(filePath).Last();
-            writer.Write(lastLine); // Write the existing data in the line
-            writer.Write(delimiter); // Write the delimiter before the new column
             writer.WriteLine(outcome); // Write the outcome value
 
             // Close the file

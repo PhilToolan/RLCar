@@ -77,7 +77,6 @@ namespace Unity.MLAgents.Demonstrations
         public void BeginEp()
         {
             timerDuration = Random.Range(8, 15);
-            //Invoke("OnCountdownBegin", timerDuration - 3);
             Invoke("OnTimerEnd", timerDuration);
         }
 
